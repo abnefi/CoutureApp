@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/Appbarfile.dart';
 
 
 class Connexion extends StatefulWidget {
@@ -15,21 +16,17 @@ class _ConnexionState extends State<Connexion> {
   @override
   Widget build(BuildContext context) {
 
-    /*final logo = Hero(
+    final logo = Hero(
         tag: 'hero',
-        child: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          radius: 48.0,
-          child: Image(
-            image: AssetImage('assets/sewing-machine.png'),
-          )
-          *//*Icon(
-            Icons.visibility,
-            size: 100.0,
-            color: Colors.white,
-          ),*//*
+        child: Padding(
+          padding: EdgeInsets.all(0.0),
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 48.0,
+            backgroundImage: AssetImage('assets/sewing-machine.png'),
+          ),
         )
-    );*/
+    );
 
     final emailInput = TextFormField(
       keyboardType: TextInputType.emailAddress,
@@ -142,19 +139,9 @@ class _ConnexionState extends State<Connexion> {
     );
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('E-Couture'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.more_vert,
-                semanticLabel: 'more_vert',
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
+        appBar: appBar1,
         body: Container(
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/tenue-jaune-femme.jpg'),
@@ -177,7 +164,7 @@ class _ConnexionState extends State<Connexion> {
                       padding: EdgeInsets.only(left: 24.0,right: 24.0),
                       children: <Widget>[
                         //logo,
-                        SizedBox(height: 100.0),
+                        SizedBox(height: 150.0),
                         emailInput,
                         SizedBox(height: 15.0),
                         passwordInput,

@@ -1,32 +1,45 @@
 
 import 'package:flutter/material.dart';
+import 'package:myapp/Appbarfile.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
+  //
+  Homepage():super();
+  @override
+  _HomepageState createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  //
+  int selectedRadio;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedRadio = 1;
+  }
+
+  setSelectedRadio(int val){
+    setState(() {
+      selectedRadio = val;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    //setSelectedRadio(selectedRadio);
     return Scaffold(
-        appBar: AppBar(
-          title: Text('E-Couture'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.more_vert,
-                semanticLabel: 'more_vert',
-                color: Colors.white,
-              ),
-            ),
-          ],
+      appBar: appBar1,
+      body:
+      Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/boubou-femme.jpg'),
+              fit: BoxFit.cover,
+            )
         ),
-        body:
+        child:
         Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/boubou-femme.jpg'),
-                fit: BoxFit.cover,
-              )
-          ),
-          child:
-          Container(
             decoration: BoxDecoration(
               color: Color(0x0095FF).withOpacity(0.35),
             ),
@@ -37,13 +50,13 @@ class Homepage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 55, 0, 0),
-                      child:
+                        margin: EdgeInsets.fromLTRB(0, 55, 0, 0),
+                        child:
                         Text('E-Couture',
                           style: TextStyle(
-                              fontSize: 48,
-                              fontFamily: 'Ubuntu',
-                              color: Colors.white,
+                            fontSize: 48,
+                            fontFamily: 'Ubuntu',
+                            color: Colors.white,
                           ),
                         )
                     )
@@ -64,18 +77,20 @@ class Homepage extends StatelessWidget {
                     )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ButtonBar(
+                  alignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        IconButton(
-                          icon: Icon(
-                            Icons.radio_button_checked,
-                            semanticLabel: 'radio_button_checked',
-                            color: Colors.white,
-                            size: 24.0,
-                          ),
+                        Radio(
+                          value: 1,
+                          groupValue: selectedRadio,
+                          activeColor: Colors.white,
+                          onChanged: (val){
+                            //print('Client $val selected');
+                            setSelectedRadio(val);
+                          },
+
                         ),
                         Text(
                           'Client',
@@ -89,26 +104,28 @@ class Homepage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        IconButton(
-                            icon: Icon(
-                              Icons.radio_button_unchecked,
-                              semanticLabel: 'radio_button_unchecked',
-                              color: Colors.white,
-                              size: 24.0,
-                            ),
+                        Radio(
+
+                          value: 2,
+                          groupValue: selectedRadio,
+                          activeColor: Colors.white,
+                          onChanged: (val){
+                            print('Client $val selected');
+                            setSelectedRadio(val);
+                          },
+                        ),
+                        Text(
+                          'Couturier(ère)',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Roboto Medium',
+                            color: Colors.white,
                           ),
-                          Text(
-                            'Couturier(ère)',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Roboto Medium',
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                        )
+                        ),
                       ],
-                    ),
+                    )
+                  ],
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -118,27 +135,29 @@ class Homepage extends StatelessWidget {
                       height: 50.0,
                       child:
                       RaisedButton(
-                        onPressed: (){},
+                          onPressed: (){},
                           textColor: Colors.white,
                           color: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0),
                           ),
-                        child: Text(
-                          'Commencer',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Roboto Medium',
-                          ),
-                        )
+                          child: Text(
+                            'Commencer',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Roboto Medium',
+                            ),
+                          )
                       ),
                     )
                   ],
                 )
-                  ],
-                )
-            ),
-          ),
+              ],
+            )
+        ),
+      ),
+
     );
+
   }
 }
