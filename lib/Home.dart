@@ -28,7 +28,7 @@ class Homepage extends StatelessWidget {
           child:
           Container(
             decoration: BoxDecoration(
-              color: Color(0x0095FF).withOpacity(0.4),
+              color: Color(0x0095FF).withOpacity(0.35),
             ),
             child:
             Column(
