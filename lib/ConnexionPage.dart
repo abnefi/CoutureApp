@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/Appbarfile.dart';
+import 'package:myapp/InscriptionPage_1.dart';
 
 
 class Connexion extends StatefulWidget {
@@ -16,22 +17,18 @@ class _ConnexionState extends State<Connexion> {
   @override
   Widget build(BuildContext context) {
 
-    final logo = Hero(
-        tag: 'hero',
-        child: Padding(
-          padding: EdgeInsets.all(0.0),
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            radius: 48.0,
-            backgroundImage: AssetImage('assets/sewing-machine.png'),
-          ),
-        )
+    final text = Text(
+      'CONNEXION',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 30,
+        fontFamily: 'Roboto Medium',
+      ),
     );
 
     final emailInput = TextFormField(
       keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      initialValue: null,
       decoration: InputDecoration(
           labelText: "Nom d'utilisateur",
           labelStyle: TextStyle(
@@ -39,6 +36,7 @@ class _ConnexionState extends State<Connexion> {
               fontFamily: 'Roboto Medium',
               color: Colors.white
           ),
+        prefixIcon: Icon(Icons.email,color: Colors.white70,),
         alignLabelWithHint: true,
         hintText: 'Votre adresse',
         hintStyle: TextStyle(
@@ -56,9 +54,6 @@ class _ConnexionState extends State<Connexion> {
     );
 
     final passwordInput = TextFormField(
-
-      autofocus: false,
-      initialValue: null,
       obscureText: true,
       decoration: InputDecoration(
         labelText: 'Mot de Passe',
@@ -68,6 +63,12 @@ class _ConnexionState extends State<Connexion> {
             color: Colors.white
           ),
           alignLabelWithHint: true,
+          prefixIcon: Icon(Icons.lock,color: Colors.white70,),
+          suffixIcon: IconButton(
+            onPressed: (){
+            },
+            icon: Icon(Icons.visibility_off),
+          ),
           hintText: 'Votre Mot de Passe',
           hintStyle: TextStyle(
             color: Colors.black54,
@@ -86,13 +87,13 @@ class _ConnexionState extends State<Connexion> {
 
 
     final inputButton = Container(
-
         width: 200.0,
         height: 50.0,
       child:
         RaisedButton(
-
-          onPressed: (){},
+          onPressed: (){
+            Navigator.of(context).pushNamed(Inscription_1.tag);
+          },
           color: Colors.blue,
           textColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -163,8 +164,8 @@ class _ConnexionState extends State<Connexion> {
                       scrollDirection: Axis.vertical,
                       padding: EdgeInsets.only(left: 24.0,right: 24.0),
                       children: <Widget>[
-                        //logo,
-                        SizedBox(height: 150.0),
+                        text,
+                        SizedBox(height: 60.0),
                         emailInput,
                         SizedBox(height: 15.0),
                         passwordInput,
@@ -172,7 +173,7 @@ class _ConnexionState extends State<Connexion> {
                         inputButton,
                         SizedBox(height: 15.0),
                         forgotPassText,
-                        SizedBox(height: 15.0),
+                        SizedBox(height: 20.0),
                         createAccount,
                       ],
                     ),

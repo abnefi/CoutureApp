@@ -1,10 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:myapp/Appbarfile.dart';
+import 'package:myapp/ConnexionPage.dart';
 
 class Homepage extends StatefulWidget {
   //
   Homepage():super();
+
+  static String tag = 'home-page';
+
   @override
   _HomepageState createState() => _HomepageState();
 }
@@ -27,9 +31,10 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    //setSelectedRadio(selectedRadio);
     return Scaffold(
-      appBar: appBar1,
+      appBar: AppBar(
+        title: Text('E-Couture'),
+      ),
       body:
       Container(
         decoration: BoxDecoration(
@@ -90,7 +95,6 @@ class _HomepageState extends State<Homepage> {
                             //print('Client $val selected');
                             setSelectedRadio(val);
                           },
-
                         ),
                         Text(
                           'Client',
@@ -105,7 +109,6 @@ class _HomepageState extends State<Homepage> {
                     Row(
                       children: <Widget>[
                         Radio(
-
                           value: 2,
                           groupValue: selectedRadio,
                           activeColor: Colors.white,
@@ -135,7 +138,9 @@ class _HomepageState extends State<Homepage> {
                       height: 50.0,
                       child:
                       RaisedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.of(context).pushNamed(Connexion.tag);
+                          },
                           textColor: Colors.white,
                           color: Colors.blue,
                           shape: RoundedRectangleBorder(
