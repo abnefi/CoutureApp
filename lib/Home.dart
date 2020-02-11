@@ -46,7 +46,7 @@ class _HomepageState extends State<Homepage> {
         child:
         Container(
             decoration: BoxDecoration(
-              color: Color(0x0095FF).withOpacity(0.35),
+              color: Color(0x0095FF).withOpacity(0.3),
             ),
             child:
             Column(

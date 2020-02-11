@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/AccueilPage.dart';
-import 'package:flutter/widgets.dart';
 
-/*class Appbarfile extends StatefulWidget {
+class Appbarfile2 extends StatefulWidget {
   @override
-  _AppbarfileState createState() => _AppbarfileState();
+  _Appbarfile2State createState() => _Appbarfile2State();
 }
 
-class _AppbarfileState extends State<Appbarfile> {
+class _Appbarfile2State extends State<AppBar> {
+
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text('E-Couture'),
       actions: <Widget>[
+        IconButton(
+          onPressed: (){
+            Navigator.of(context).pushNamed(Accueil.tag);
+          },
+          icon: Icon(Icons.home),
+        ),
         PopupMenuButton <String>(
           onSelected: ChoiceAction,
           itemBuilder: (BuildContext context){
@@ -23,28 +30,11 @@ class _AppbarfileState extends State<Appbarfile> {
               );
             }).toList();
           },
-        )
+        ),
       ],
     );
   }
-}*/
-
-final appbar1 = AppBar(
-  title: Text('E-Couture'),
-  actions: <Widget>[
-    PopupMenuButton <String>(
-      onSelected: ChoiceAction,
-      itemBuilder: (BuildContext context){
-        return Constants.choices.map((String choices){
-          return PopupMenuItem<String>(
-            value: choices,
-            child: Text(choices),
-          );
-        }).toList();
-      },
-    )
-  ],
-);
+}
 
 class Constants{
   static const String MonCompte = 'Mon compte';
@@ -58,10 +48,6 @@ class Constants{
   ];
 }
 
-
-  void ChoiceAction(String choice){
-    //print ('Working');
-    if(choice == 'Mon compte'){
-      print('je veux manger');
-    }
-  }
+void ChoiceAction(String choice){
+  print ('Working');
+}

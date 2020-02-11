@@ -19,6 +19,9 @@ final bodyContainerDecorationGradient = BoxDecoration(
 );
 
 final lastNameInput = TextFormField(
+  onChanged: (String value){},
+  onSaved: (String value){},
+  autocorrect: true,
   keyboardType: TextInputType.text,
   decoration: InputDecoration(
       labelText: 'Nom',
@@ -41,6 +44,9 @@ final lastNameInput = TextFormField(
 );
 
 final firstNameInput = TextFormField(
+  onChanged: (String value){},
+  onSaved: (String value){},
+  autocorrect: true,
   keyboardType: TextInputType.text,
   decoration: InputDecoration(
       labelText: 'Prénom',
@@ -62,29 +68,9 @@ final firstNameInput = TextFormField(
   ),
 );
 
-final adressInput = TextFormField(
-  keyboardType: TextInputType.text,
-  decoration: InputDecoration(
-      labelText: 'Adresse de Travail',
-      labelStyle: TextStyle(
-        fontFamily: 'Roboto Medium',
-        fontSize: 15.0,
-        color: Colors.white,
-      ),
-      prefixIcon: Icon(Icons.business,color: Colors.white70,),
-      contentPadding: EdgeInsets.symmetric(horizontal: 15.0,vertical: 10.0),
-      enabledBorder:  OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.white, width: 2.0),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      )
-  ),
-
-);
-
 final telephoneInput = TextFormField(
+  onChanged: (String value){},
+  onSaved: (String value){},
   keyboardType: TextInputType.phone,
   decoration: InputDecoration(
       labelText: 'Téléphone',
@@ -153,31 +139,3 @@ final passwordInput = TextFormField(
       )
   ),
 );
-
-final passwordConfirmInput = TextFormField(
-  obscureText: true,
-  decoration: InputDecoration(
-      labelText: 'Confirmation',
-      labelStyle: TextStyle(
-        fontFamily: 'Roboto Medium',
-        fontSize: 15.0,
-        color: Colors.white,
-      ),
-      prefixIcon: Icon(Icons.lock,color: Colors.white70,),
-      suffixIcon: IconButton(
-        onPressed: (){
-        },
-        icon: Icon(Icons.visibility_off),
-      ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 15.0,vertical: 10.0),
-      enabledBorder:  OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.white, width: 2.0),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      )
-  ),
-);
-
-

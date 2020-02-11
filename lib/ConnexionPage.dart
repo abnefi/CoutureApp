@@ -17,6 +17,26 @@ class _ConnexionState extends State<Connexion> {
   @override
   Widget build(BuildContext context) {
 
+    //Appbar
+    final appbar = AppBar(
+      title: Text('E-Couture'),
+      actions: <Widget>[
+        PopupMenuButton <String>(
+          onSelected: ChoiceAction,
+          itemBuilder: (BuildContext context){
+            return Constants.choices.map((String choices){
+              return PopupMenuItem<String>(
+                value: choices,
+                child: Text(choices),
+              );
+            }).toList();
+          },
+        )
+      ],
+    );
+
+    //Fin Appbar
+
     final text = Text(
       'CONNEXION',
       textAlign: TextAlign.center,
@@ -140,7 +160,7 @@ class _ConnexionState extends State<Connexion> {
     );
 
     return Scaffold(
-        appBar: appBar1,
+        appBar: appbar,
         body: Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -151,7 +171,7 @@ class _ConnexionState extends State<Connexion> {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: Color(0x0095FF).withOpacity(0.35),
+              color: Color(0x0095FF).withOpacity(0.3),
             ),
             child:
                 Container(
@@ -182,5 +202,25 @@ class _ConnexionState extends State<Connexion> {
           ),
         )
     );
+  }
+}
+
+class Constants{
+  static const String MonCompte = 'Mon compte';
+  static const String Parametres = 'Paramètres';
+  static const String Partager = 'Partager';
+  static const String Apropos = 'A propos';
+  static const String Quitter = 'Quitter';
+
+  static const List<String> choices = <String> [
+    MonCompte,Parametres, Partager, Apropos, Quitter
+  ];
+}
+
+
+void ChoiceAction(String choice){
+  //print ('Working');
+  if(choice == 'Mon compte'){
+    print('je veux manger');
   }
 }

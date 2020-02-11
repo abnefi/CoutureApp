@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:myapp/Appbarfile.dart';
 import 'package:myapp/InscriptionPage_2.dart';
 import 'package:myapp/InscriptionVariables.dart';
 
@@ -22,10 +21,33 @@ class _Inscription_1State extends State<Inscription_1>{
   //
   int selectedRadio;
 
+  String _value = null ;
+  List<String> _values = List<String>();
+
+  String _value1 = null ;
+  List<String> _values1 = List<String>();
+
   @override
   void initState() {
     super.initState();
     selectedRadio = 1;
+    //
+    _values.addAll(["Homme","Femme","Mixte"]);
+    _value = _values.elementAt(0);
+
+    _values1.addAll(["Styliste","Brodeur","Traditionnel"]);
+    _value1 = _values1.elementAt(0);
+  }
+
+  void _onChanged(String value){
+    setState(() {
+      _value = value;
+    });
+  }
+  void _onChanged1(String value){
+    setState(() {
+      _value1 = value;
+    });
   }
 
   setSelectedRadio(int val){
@@ -36,6 +58,26 @@ class _Inscription_1State extends State<Inscription_1>{
 
   @override
   Widget build(BuildContext context){
+
+    //Appar
+    final appbar = AppBar(
+      title: Text('E-Couture'),
+      actions: <Widget>[
+        PopupMenuButton <String>(
+          onSelected: ChoiceAction,
+          itemBuilder: (BuildContext context){
+            return Constants.choices.map((String choices){
+              return PopupMenuItem<String>(
+                value: choices,
+                child: Text(choices),
+              );
+            }).toList();
+          },
+        )
+      ],
+    );
+
+    //fin Appbar
 
     final gender = ButtonBar(
       children: <Widget>[
@@ -96,6 +138,37 @@ class _Inscription_1State extends State<Inscription_1>{
       ],
     );
 
+    final typeCouturier = DropdownButton(
+      value: _value,
+      items: _values.map((String value){
+        return DropdownMenuItem(
+          value: value,
+          child: Row(
+            children: <Widget>[
+              Text(value,
+              )
+            ],
+          ),
+        );
+      }).toList(),
+      onChanged: (String value){_onChanged(value);},
+    );
+
+    final specialiteCouturier = DropdownButton(
+      value: _value1,
+      items: _values1.map((String value){
+        return DropdownMenuItem(
+          value: value,
+          child: Row(
+            children: <Widget>[
+              Text(value)
+            ],
+          ),
+        );
+      }).toList(),
+      onChanged: (String value){_onChanged1(value);},
+    );
+
     final nextButton = Container(
         width: 129.0,
         height: 35.0,
@@ -120,10 +193,9 @@ class _Inscription_1State extends State<Inscription_1>{
         )
     );
 
-
     return Scaffold(
       resizeToAvoidBottomPadding: true,
-      appBar: appBar1,
+      appBar: appbar ,
       body:
       Container(
         width: MediaQuery.of(context).size.width,
@@ -174,29 +246,59 @@ class _Inscription_1State extends State<Inscription_1>{
                               child:
                               Column(
                                 children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        width: 145,
-                                        child: lastNameInput,
-                                      ),
-                                      SizedBox(width: 20.0,),
-                                      Container(
-                                        width: 145,
-                                        child: firstNameInput,
-                                      )
-                                    ],
-                                  ),
+                                  lastNameInput,
+                                  SizedBox(height: 20.0,),
+                                  firstNameInput,
                                   SizedBox(height: 10.0,),
                                   Row(
                                     children: <Widget>[
                                       gender
                                     ],
                                   ),
-                                  adressInput,
-                                  SizedBox(height: 20.0,),
                                   telephoneInput,
-                                  SizedBox(height: 200.0,),
+                                  SizedBox(height: 30.0,),
+                                  Row(
+                                    children: <Widget>[
+                                      Text('Type de couturier(ère) :',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Roboto Medium',
+                                            fontSize: 18
+                                        ),
+                                      ),
+                                      SizedBox(width: 20.0,),
+                                      Container(
+                                        height: 25.0,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white
+                                        ),
+                                        child:
+                                        typeCouturier,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 35.0,),
+                                  Row(
+                                    children: <Widget>[
+                                      Text('Votre Spécialité :',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Roboto Medium',
+                                            fontSize: 18
+                                        ),
+                                      ),
+                                      SizedBox(width: 20.0,),
+                                      Container(
+                                        height: 25.0,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white
+                                        ),
+                                        child:
+                                        specialiteCouturier,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 100.0,),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
@@ -215,5 +317,25 @@ class _Inscription_1State extends State<Inscription_1>{
             )
       )
     );
+  }
+}
+
+class Constants{
+  static const String MonCompte = 'Mon compte';
+  static const String Parametres = 'Paramètres';
+  static const String Partager = 'Partager';
+  static const String Apropos = 'A propos';
+  static const String Quitter = 'Quitter';
+
+  static const List<String> choices = <String> [
+    MonCompte,Parametres, Partager, Apropos, Quitter
+  ];
+}
+
+
+void ChoiceAction(String choice){
+  //print ('Working');
+  if(choice == 'Mon compte'){
+    print('je veux manger');
   }
 }

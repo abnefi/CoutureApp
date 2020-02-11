@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:myapp/AccueilPage.dart';
-import 'package:myapp/Appbarfile.dart';
 import 'package:myapp/InscriptionVariables.dart';
 
 class Inscription_2 extends StatefulWidget{
@@ -16,13 +14,52 @@ class Inscription_2 extends StatefulWidget{
   _Inscription_2State createState() => _Inscription_2State();
 }
 
+
+class Constants{
+  static const String MonCompte = 'Mon compte';
+  static const String Parametres = 'Paramètres';
+  static const String Partager = 'Partager';
+  static const String Apropos = 'A propos';
+  static const String Quitter = 'Quitter';
+
+  static const List<String> choices = <String> [
+    MonCompte,Parametres, Partager, Apropos, Quitter
+  ];
+}
+
+
+void ChoiceAction(String choice){
+  //print ('Working');
+  if(choice == 'Mon compte'){
+    print('je veux manger');
+  }
+}
+
 class _Inscription_2State extends State<Inscription_2>{
   //
-  final formkey = GlobalKey<FormState>();
-
 
   @override
   Widget build(BuildContext context){
+
+    //Appar
+    final appbar = AppBar(
+      title: Text('E-Couture'),
+      actions: <Widget>[
+        PopupMenuButton <String>(
+          onSelected: ChoiceAction,
+          itemBuilder: (BuildContext context){
+            return Constants.choices.map((String choices){
+              return PopupMenuItem<String>(
+                value: choices,
+                child: Text(choices),
+              );
+            }).toList();
+          },
+        )
+      ],
+    );
+
+    //Fin Appbar
 
     final nextButton = Container(
         width: 129.0,
@@ -50,7 +87,7 @@ class _Inscription_2State extends State<Inscription_2>{
 
     return Scaffold(
         resizeToAvoidBottomPadding: true,
-        appBar: appBar1,
+        appBar: appbar,
         body:
         Container(
             width: MediaQuery.of(context).size.width,
@@ -61,7 +98,7 @@ class _Inscription_2State extends State<Inscription_2>{
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
-                color: Color(0x0095FF).withOpacity(0.35),
+                color: Color(0x0095FF).withOpacity(0.3),
               ),
             child:
               ListView(
@@ -92,30 +129,30 @@ class _Inscription_2State extends State<Inscription_2>{
                           ],
                         ),
                       ),
+
                       Container(
+                        padding: EdgeInsets.symmetric(horizontal:24.0),
                         child:
-                        Form(
-                            child:
-                            Padding(
-                              padding: EdgeInsets.only(left: 24.0,right: 24.0,top: 40.0),
-                              child:
-                              Column(
-                                children: <Widget>[
-                                  emailInput,
-                                  SizedBox(height: 30.0,),
-                                  passwordInput,
-                                  SizedBox(height: 30.0,),
-                                  passwordConfirmInput,
-                                  SizedBox(height: 240.0,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: <Widget>[
-                                      nextButton
-                                    ],
-                                  )
-                                ],
-                              ),
+                        Text(
+                            "Pour finaliser votre inscription nous avons besoin "
+                                "de connaître l'emplacement de votre atelier \n\n"
+                                "Êtes-vous sur votre lieu de travail ? ",
+                            style: TextStyle(
+                              fontFamily: 'Roboto Medium',
+                              fontSize: 25.0,
+                              color: Colors.tealAccent
                             )
+                        ),
+                      ),
+                      SizedBox(height: 250,),
+                      Padding(
+                        padding: EdgeInsets.only(right:24.0),
+                        child:
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            nextButton
+                          ],
                         ),
                       )
                     ],
