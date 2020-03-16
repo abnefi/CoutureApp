@@ -8,6 +8,27 @@ class ContenuAccueil extends StatefulWidget {
   _ContenuAccueilState createState() => _ContenuAccueilState();
 }
 
+class Constants{
+  static const String MonCompte = 'Mon compte';
+  static const String Parametres = 'Paramètres';
+  static const String Partager = 'Partager';
+  static const String Apropos = 'A propos';
+  static const String Quitter = 'Quitter';
+
+  static const List<String> choices = <String> [
+    MonCompte,Parametres, Partager, Apropos, Quitter
+  ];
+}
+
+
+void ChoiceAction(String choice){
+  //print ('Working');
+  if(choice == 'Mon compte'){
+    print('je veux manger');
+  }
+}
+
+
 class _ContenuAccueilState extends State<ContenuAccueil> {
 
 
@@ -19,67 +40,91 @@ class _ContenuAccueilState extends State<ContenuAccueil> {
       new GridModel(name:"Couples", chemin:"assets/boubou-femme.jpg"),
       new GridModel(name:"Enfants", chemin:"assets/boubou-femme.jpg")
     ];
-    return Column(
-      children: <Widget>[
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
-                height: MediaQuery.of(context).size.height-565.9,
-                width: MediaQuery.of(context).size.width,
-                child:
-                Card(
-                  elevation: 2.0,
-                  child:
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 7.0),
-                      child: Image(
-                        image: AssetImage('assets/boubou-femme.jpg'),
-                        fit: BoxFit.contain,
-                      ),
-                    )
-                ),
-              ),
-            ]
-        ),
-        Container(  //Les gridTiles
-          margin: EdgeInsets.only(top: 10.0),
-          height: MediaQuery.of(context).size.height-365,
-          child: GridView.count(
-            crossAxisCount: 2,
-            padding: EdgeInsets.all(16.0),
-            childAspectRatio: 0.9,
-            crossAxisSpacing: 25.0,
-            mainAxisSpacing: 25.0,
-            children:
-           List.generate(model.length, (index)
-           {
-             return
-               GestureDetector(
-                 child:
-                   GridTile(
-                     child:  model[index],
-                   ),
-                 onTap: (){
-                    if(model[index].name == 'Homme'){
-                      Navigator.of(context).pushNamed(SOusCategorieHomme.tagHomme);
-                    }
-                    else if(model[index].name == 'Femme'){
-                      Navigator.of(context).pushNamed(SOusCategorieHomme.tagFemme);
-                    }else if(model[index].name == 'Couples'){
-                      Navigator.of(context).pushNamed(SOusCategorieHomme.tagCouples);
-                    }else{
-                      Navigator.of(context).pushNamed(SOusCategorieHomme.tagEnfants);
-                    }
-                   },
-               );
 
-           }),
-          ),
+    //Appbar
+    final appbarCOntAcc = AppBar(
+      title: Text('Fashion Tailor'),
+      actions: <Widget>[
+        PopupMenuButton <String>(
+          onSelected: ChoiceAction,
+          itemBuilder: (BuildContext context){
+            return Constants.choices.map((String choices){
+              return PopupMenuItem<String>(
+                value: choices,
+                child: Text(choices),
+              );
+            }).toList();
+          },
         )
       ],
     );
+    //Fin Appbar
+
+    return Scaffold(
+      appBar: appbarCOntAcc,
+      body: Column(
+        children: <Widget>[
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+                  height: MediaQuery.of(context).size.height-565.9,
+                  width: MediaQuery.of(context).size.width,
+                  child:
+                  Card(
+                      elevation: 2.0,
+                      child:
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 7.0),
+                        child: Image(
+                          image: AssetImage('assets/boubou-femme.jpg'),
+                          fit: BoxFit.contain,
+                        ),
+                      )
+                  ),
+                ),
+              ]
+          ),
+          Container(  //Les gridTiles
+            margin: EdgeInsets.only(top: 10.0),
+            height: MediaQuery.of(context).size.height-365,
+            child: GridView.count(
+              crossAxisCount: 2,
+              padding: EdgeInsets.all(16.0),
+              childAspectRatio: 0.9,
+              crossAxisSpacing: 25.0,
+              mainAxisSpacing: 25.0,
+              children:
+              List.generate(model.length, (index)
+              {
+                return
+                  GestureDetector(
+                    child:
+                    GridTile(
+                      child:  model[index],
+                    ),
+                    onTap: (){
+                      if(model[index].name == 'Homme'){
+                        Navigator.of(context).pushNamed(SOusCategorieHomme.tagHomme);
+                      }
+                      else if(model[index].name == 'Femme'){
+                        Navigator.of(context).pushNamed(SOusCategorieHomme.tagFemme);
+                      }else if(model[index].name == 'Couples'){
+                        Navigator.of(context).pushNamed(SOusCategorieHomme.tagCouples);
+                      }else{
+                        Navigator.of(context).pushNamed(SOusCategorieHomme.tagEnfants);
+                      }
+                    },
+                  );
+
+              }),
+            ),
+          )
+        ],
+      ),
+    ) ;
+
   }
 }
 

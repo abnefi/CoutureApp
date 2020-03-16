@@ -39,10 +39,6 @@ class _SOusCategorieHommeState extends State<SOusCategorieHomme> {
             ),
             child: ListTile(
               onTap: (){
-                /*onListTileClick(){
-                  print("${modele[index].nomModele} is clicked");
-                };
-                onListTileClick();*/
                 Navigator.of(context).pushNamed(AlbumGidView.albumGridTag);
               },
               title: Text(modele[index].nomModele),

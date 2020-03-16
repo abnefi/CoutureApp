@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/AccueilPage.dart';
 import 'package:myapp/ConnexionPage.dart';
+import 'package:myapp/CreationClient.dart';
 import 'package:myapp/InscriptionPage_1.dart';
 import 'package:myapp/InscriptionPage_2.dart';
+import 'package:myapp/ListeClients.dart';
 import 'package:myapp/SousCategorie_Homme.dart';
 import 'Home.dart';
 import 'ModelesHomme.dart';
@@ -22,6 +24,7 @@ class ECouture extends StatelessWidget {
     SOusCategorieHomme.tagEnfants: (context) => SOusCategorieHomme('Enfants'),
     SOusCategorieHomme.tagCouples: (context) => SOusCategorieHomme('Couples'),
     AlbumGidView.albumGridTag: (context) => AlbumGidView(),
+    CreerClient.tagCreerClient: (context) => CreerClient(),
   };
 
   @override

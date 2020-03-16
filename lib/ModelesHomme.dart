@@ -58,10 +58,6 @@ class AlbumGidView extends StatefulWidget {
 
  static String albumGridTag = 'albumGridTag';
 
-  /*String title;
-
-  AlbumGidView({this.title});*/
-
   @override
   _AlbumGidViewState createState() => _AlbumGidViewState();
 }
