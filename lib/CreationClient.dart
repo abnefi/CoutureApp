@@ -212,7 +212,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('H Poitrine : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -222,7 +222,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Buste : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -234,7 +234,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Corsage : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -244,7 +244,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Robe : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -256,7 +256,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Encolure : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -266,7 +266,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Ca Devant : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -278,7 +278,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Tr Poitrine : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -288,7 +288,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Ecart sein : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -300,7 +300,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Tr de Taille : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -310,7 +310,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Tr Manche : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -322,7 +322,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Jupe : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -332,7 +332,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Pantalon : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -344,7 +344,7 @@ class _CreerClientState extends State<CreerClient> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Dos : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -354,7 +354,7 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Ca Dos : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -362,11 +362,12 @@ class _CreerClientState extends State<CreerClient> {
                             ],
                           )
                         ],
-                      ),Row(
+                      ),
+                      Row(
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Larg Dos : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,
@@ -376,7 +377,30 @@ class _CreerClientState extends State<CreerClient> {
                           SizedBox(width: 30.0,),
                           Row(
                             children: <Widget>[
-                              Text('Teint : '),
+                              Text('Lg Manche : '),
+                              Container(
+                                width: 100,
+                                child: inputstyle,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Text('Poignet : '),
+                              Container(
+                                width: 100,
+                                child: inputstyle,
+                              )
+                            ],
+                          ),
+                          SizedBox(width: 30.0,),
+                          Row(
+                            children: <Widget>[
+                              Text('Pente : '),
                               Container(
                                 width: 100,
                                 child: inputstyle,

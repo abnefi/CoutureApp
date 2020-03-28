@@ -5,6 +5,7 @@ import 'package:myapp/ContenuAccueil.dart';
 import 'package:myapp/Home.dart';
 import 'package:myapp/InscriptionPage_1.dart';
 import 'package:myapp/ListeClients.dart';
+import 'package:myapp/ListeCommades.dart';
 import 'package:myapp/SousCategorie_Homme.dart';
 import 'package:myapp/BottomNavigationBarFile.dart';
 
@@ -23,7 +24,7 @@ class _AccueilState extends State<Accueil>{
     switch(currentIndex){
       case 0: return ContenuAccueil();
       case 1: return ListeClients();
-      case 2: return Connexion();
+      case 2: return ListeCommandes();
       case 3: return Inscription_1();
       break;
       default: ContenuAccueil();
